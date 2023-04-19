@@ -1,0 +1,98 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="pragma" content="no-cache" />
+  <meta http-equiv="expires" content="-1" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Espero Hotspot Area - Masuk</title>
+  <link rel="shortcut icon" href="img/logo.png" type="image/x-icon">
+  <link rel="stylesheet" href="css/bootstrap.min.css" />
+  <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+  $(if chap-id)
+    <form name="sendin" action="$(link-login-only)" method="post" style="display:none">
+        <input type="hidden" name="username" />
+        <input type="hidden" name="password" />
+        <input type="hidden" name="dst" value="$(link-orig)" />
+        <input type="hidden" name="popup" value="true" />
+    </form>
+
+    <script src="/md5.js"></script>
+    <script>
+        function doLogin() {
+            document.sendin.username.value = document.login.username.value;
+            document.sendin.password.value = hexMD5('$(chap-id)' + document.login.password.value + '$(chap-challenge)');
+            document.sendin.submit();
+            return false;
+        }
+
+    </script>
+    $(endif)
+  <main class="form-signin w-100 m-auto text-center">
+    <form name="login" action="$(link-login-only)" method="post" $(if chap-id) onSubmit="return doLogin()" $(endif)>
+      <input type="hidden" name="dst" value="$(link-orig)" />
+      <input type="hidden" name="popup" value="true" />
+      <img class="mb-2" src="img/logo.png" alt="" width="150">
+      <h1 class="h3 mb-3 fw-bold text-black">Espero Hotspot Area</h1>
+<p class="small">Input akun anda, lalu klik <strong>Connect</strong></p>
+      <div class="form-floating">
+        <input type="text" class="form-control" name="username" id="floatingInput" placeholder="NIP/NIS/Username" value="$(username)">
+        <label for="floatingInput">NIP/NISN/Username</label>
+      </div>
+      <div class="form-floating">
+        <input type="password" name="password" class="form-control" id="password" placeholder="Password">
+        <label for="password">Password</label>
+      </div>
+      $(if error)
+      <div class="alert alert-danger alert-dismissible fade show" role="alert">
+        $(error)
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+      </div>
+      $(endif)
+      <button class="w-100 btn btn-lg btn-primary mb-2" type="submit">Connect</button>
+      <a href="#" class="text-mutedtext-decoration-none small"data-bs-toggle="modal" data-bs-target="#staticBackdrop" type="button">Informasi Akun</a>
+      <p class="mt-5 mb-3 small text-muted">&copy; 2023 Dibuat dan dikembangkan oleh <a href="https://muhsaidlg.my.id" class="text-decoration-none" target="_blank">Muhammad Said Latif Ghofari</a></p>
+      <!-- <p class="mt-5 mb-3 small text-muted">&copy; 2023 Dibuat oleh Kelompok KI UMBY</p> -->
+    </form>
+  </main>
+  <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-scrollable">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1 class="modal-title fs-5" id="staticBackdropLabel">Informasi Akun</h1>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <p>Untuk mengakses layanan internet di SMP Negeri 2 Wonosari silahkan menggunakan akun berupa Username dan Password sesuai dengan keterangan di bawah ini.</p>
+          <ul><li>
+            <h6 class="fw-bold">Guru & Karyawan</h6>
+            <ul><li>Username: 
+              <ul><li>ASN: <strong>NIP</strong> (Nomor Induk Pegawai)</li><li>Non ASN: <strong>NIK</strong> (Nomor Induk Kependudukan)</li>
+              </ul>
+            </li><li>Password: <strong>Tahun lahir</strong>  (4 Digit)</li></ul>
+          </li>
+        <li><h6 class="fw-bold">Peserta Didik & Alumni</h6>
+        <ul><li>Username: <strong>NISN</strong> (Nomor Induk Siswa Nasional)</li><li>Password: <strong>Tahun lahir</strong>  (4 Digit)</li></ul></li>
+        <li><h6 class="fw-bold">Tamu Luar SMPN 2 Wonosari</h6><ul><li>Silahkan bertanya kepada admin di kantor TU</li></ul></li>
+        $(if trial == 'yes')
+        <li><h6 class="fw-bold">Free Access</h6><ul><li>Akses gratis terbatas <a href="$(link-login-only)?dst=$(link-orig-esc)&amp;username=T-$(mac-esc)" class="text-decoration-none">Klik Disini</a></li></ul></li>
+        $(endif)
+        </ul>
+          <p class="fst-italic small">
+Akun anda dapat digunakan maksimal 2 perangkat. Jika menghendaki lebih dari 2 perangkat silahkan hubungi admin di Kantor TU.
+          </p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Tutup</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <script src="js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html> 
