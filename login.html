@@ -32,7 +32,7 @@
 
     </script>
     $(endif)
-  <main class="form-signin w-100 m-auto text-center">
+  <main class="form-signin w-100 mx-auto text-center">
     <form name="login" action="$(link-login-only)" method="post" $(if chap-id) onSubmit="return doLogin()" $(endif)>
       <input type="hidden" name="dst" value="$(link-orig)" />
       <input type="hidden" name="popup" value="true" />
@@ -41,7 +41,7 @@
 <p class="small">Input akun anda, lalu klik <strong>Connect</strong></p>
       <div class="form-floating">
         <input type="text" class="form-control" name="username" id="floatingInput" placeholder="NIP/NIS/Username" value="$(username)">
-        <label for="floatingInput">NIP/NISN/Username</label>
+        <label for="floatingInput">NIP/NISN/NIK/Username</label>
       </div>
       <div class="form-floating">
         <input type="password" name="password" class="form-control" id="password" placeholder="Password">
@@ -83,7 +83,7 @@
         $(endif)
         </ul>
           <p class="fst-italic small">
-Akun anda dapat digunakan maksimal 2 perangkat. Jika menghendaki lebih dari 2 perangkat silahkan hubungi admin di Kantor TU.
+Akun anda dapat digunakan maksimal 3 perangkat. Jika menghendaki lebih dari 3 perangkat silahkan hubungi admin di Kantor TU.
           </p>
         </div>
         <div class="modal-footer">
